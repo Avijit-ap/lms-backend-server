@@ -108,10 +108,7 @@ exports.verifyPayment = async (req, res) => {
             })
         }
 
-        return res.status(500).json({
-            success:false,
-            message:"Payment Failed",
-        })
+        
     }
     catch(err){
         return res.status(500).json({
