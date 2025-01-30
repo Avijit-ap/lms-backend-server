@@ -38,9 +38,17 @@ exports.updateCourseProgress = async (req, res) => {
                 message:"Course progress does not exits",
             })
         }
-
+        // const completedVideos = courseProgressDetails?.completedVideos || [];
+        // console.log('Array content:', completedVideos);
+        // console.log('Looking for:', subSectionId);
+        // console.log('Type of subSectionId:', typeof subSectionId);
+        // console.log('Is array?', Array.isArray(completedVideos));
+        // console.log('Array length:', completedVideos.length);
+        // if (completedVideos.includes(subSectionId)) {
+        //   console.log('Found in array');
+        // }
         // check that video || subSectionId is already marked or not
-        if(courseProgressDetails?.completedVideos.includes(subSectionId)){
+        if(courseProgressDetails?.completedVideos?.includes(subSectionId)){
             return res.status(400).json({
                 success:false,
                 message:"Subsection is already Completed",

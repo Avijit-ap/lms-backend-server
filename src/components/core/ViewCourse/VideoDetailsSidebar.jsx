@@ -15,6 +15,7 @@ const VideoDetailsSidebar = ({setReviewModal}) => {
     const navigate = useNavigate();
     const location = useLocation();
     const {sectionId, subSectionId} = useParams();
+    //debugger
     const {
         courseSectionData,
         courseEntireData,
@@ -102,8 +103,17 @@ const VideoDetailsSidebar = ({setReviewModal}) => {
                               className={` flex gap-3 px-5 py-2 ${subSectionId === subSectionData?._id ? ("bg-yellow-200 font-semibold text-richblack-800") : ("hover:bg-richblack-900")} `}
                              >
                               {/* checkbox */}
-                              <input type="checkbox" checked={completedLectures?.includes(subSectionData?._id)} />
-                              <p>{subSectionData?.title}</p>
+                              <input
+  type="checkbox"
+  checked={(() => {
+    debugger; // Execution will pause here
+    console.log("this is 109 result",completedLectures?.includes(subSectionData.title) || false)
+    const isCompleted = completedLectures.some(
+      (lecture) => lecture.title === subSectionData.title
+    );
+    
+    return isCompleted || false;  })()}
+/>                              <p>{subSectionData?.title}</p>
                             </div>
                           ))
                         }

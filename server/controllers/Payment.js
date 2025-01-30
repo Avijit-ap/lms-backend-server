@@ -18,7 +18,7 @@ exports.capturePayment = async (req, res) => {
 
         let totalAmount = 0;
 
-        for( courseId of courses ){
+        for( let courseId of courses ){
 
             try{
                 const courseDetails = await Course.findById({_id:courseId});
@@ -167,7 +167,7 @@ const enrollStudents = async (courses, userId, res) => {
                                                                     {new:true});
 
             // sending mail to student
-            const mailResponse = await mailSender( enrolledStudents.email,
+            const mailResponse = await MailSender( enrolledStudents.email,
                                                     `Successfully Enrolled into ${enrolledCourse.courseName}`,
                                                     courseEnrollmentEmail(enrolledCourse.courseName, `${enrolledStudents.firstName} ${enrolledStudents.lastName}` )  );
 
